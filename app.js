@@ -10,6 +10,7 @@ const  productRouter  = require('./routes/product');
 const  mongoose  = require('mongoose');
 
 var app = express();
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
