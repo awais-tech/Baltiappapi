@@ -4,7 +4,7 @@ const { Order } = require("../models/orders");
 let router = express.Router();
 
 //get products
-router.post("/", async (req, res) => {
+router.get("/", async (req, res) => {
   let orders = await Order.find();
   return res.send(orders);
 });
