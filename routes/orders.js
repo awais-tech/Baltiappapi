@@ -11,6 +11,7 @@ router.get("/", async (req, res) => {
 
 //postproducts
 router.post("/", async (req, res) => {
+  console.log(req.body);
   let orders = new Order(req.body);
   await orders.save();
   return res.send(orders);
