@@ -1,8 +1,8 @@
 var mongoose = require("mongoose");
 
 var orderSchema = mongoose.Schema({
-  amount: Number,
-  dateTime: String,
+  amount: { type: Number },
+  dateTime: { type: String },
   products: [
     {
       type: mongoose.Schema({
