@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 var orderSchema = mongoose.Schema({
-  amount: String,
+  amount: Number,
   dateTime: String,
   products: [
     {
