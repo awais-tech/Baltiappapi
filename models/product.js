@@ -12,6 +12,7 @@ var productSchema = mongoose.Schema({
   description: String,
   isFavorite: Boolean,
 });
+
 var Product = mongoose.model("Product", productSchema);
 
 module.exports.Product = Product;
