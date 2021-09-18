@@ -11,9 +11,9 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   console.log(req.body);
-  let Product = new Product(req.body);
-  await Product.save();
-  return res.send(Product);
+  let product = new Product(req.body);
+  await product.save();
+  return res.send(product);
 });
 router.put("/:id", async (req, res) => {
   let product = Product.findOneAndUpdate(req.params.id, req.body);
