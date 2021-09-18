@@ -8,5 +8,10 @@ router.get("/", async (req, res) => {
 
   return res.send(products);
 });
+router.delete("/:id", async (req, res) => {
+  let products = await Product.findByIdAndDelete(req.params.id);
+
+  return res.send(products);
+});
 
 module.exports = router;
