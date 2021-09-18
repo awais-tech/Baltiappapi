@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
   return res.send(product);
 });
 router.put("/:id", async (req, res) => {
-  let product = Product.findOneAndUpdate(req.params.id, req.body);
+  let product = await Product.findOneAndUpdate(req.params.id, req.body);
 
   return res.status(200).send(product);
 });
