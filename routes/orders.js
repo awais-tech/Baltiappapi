@@ -8,7 +8,12 @@ router.get("/", async (req, res) => {
   let orders = await Order.find();
   return res.send(orders);
 });
-
+router.put("/:id", async (req, res) => {
+  let orders = await Order.findByIdAndUpdate(req.params.id, req.body, {
+    upsert: true,
+  });
+  return res.send(orders);
+});
 //postproducts
 router.post("/", async (req, res) => {
   console.log(req.body);

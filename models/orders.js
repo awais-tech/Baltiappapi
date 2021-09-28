@@ -13,6 +13,7 @@ var orderSchema = mongoose.Schema({
       }),
     },
   ],
+  status: { type: String, default: "Pending" },
 });
 var Order = mongoose.model("Order", orderSchema);
 
