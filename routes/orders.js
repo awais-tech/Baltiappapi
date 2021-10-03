@@ -14,7 +14,7 @@ router.put("/:id", async (req, res) => {
       _id: "1122",
       "UserId._id": "6159de8cf0355695be4cff43",
     },
-    { $set: { "Userid.$.status": req.body.status } }
+    { $set: { "UserId.$.status": req.body.status } }
   );
 
   return res.send(orders);
