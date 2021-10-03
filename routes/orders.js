@@ -18,13 +18,13 @@ router.put("/:id", async (req, res) => {
 router.post("/:id", async (req, res) => {
   let findorder = await Order.findById(req.params.id);
   if (!findorder) {
-    let orders = await new Order();
+    let orders = new Order();
     orders._id = req.params.id;
     orders.UserId = req.body;
     await orders.save();
     return res.send(orders);
   } else {
-    await findorder.UserId.push(req.body);
+    findorder.UserId.push(req.body);
     await findorder.save();
     return res.send(findorder);
   }
