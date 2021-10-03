@@ -12,7 +12,7 @@ router.put("/:id", async (req, res) => {
   // let orders = await Order.findOne({ "Userid[0]._id": req.params.id });
   // orders.Userid[0].status = req.body.status;
   // await orders.save();
-  return res.send(2);
+  return res.send("/:id");
 });
 //postproducts
 router.post("/:id", async (req, res) => {
