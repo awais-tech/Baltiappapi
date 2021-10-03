@@ -11,9 +11,9 @@ router.get("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
   let orders = await Order.findOneAndUpdate(
     {
-      "UserId._id": "6159de8cf0355695be4cff43",
+      "UserId._id": req.params.id,
     },
-    { $set: { "UserId.$.status": "pending" } }
+    { $set: { "UserId.$.status": req.body.status } }
   );
 
   return res.send(orders);
