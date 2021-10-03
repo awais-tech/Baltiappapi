@@ -4,8 +4,8 @@ const { Order } = require("../models/orders");
 let router = express.Router();
 
 //get products
-router.get("/", async (req, res) => {
-  let orders = await Order.find();
+router.get("/:id", async (req, res) => {
+  let orders = await Order.findById(req.params.id);
   return res.send(orders);
 });
 router.put("/:id", async (req, res) => {
