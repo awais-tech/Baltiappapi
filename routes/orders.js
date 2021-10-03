@@ -15,11 +15,19 @@ router.put("/:id", async (req, res) => {
   return res.send(orders);
 });
 //postproducts
-router.post("/", async (req, res) => {
-  console.log(req.body);
-  let orders = new Order(req.body);
-  await orders.save();
-  return res.send(orders);
+router.post("/:id", async (req, res) => {
+  let findorder = Order.findById(req.params.id);
+  if (!findorder) {
+    let orders = await new Order();
+    orders._id = req.params.id;
+    orders.UserId = req.body;
+    await orders.save();
+    return res.send(orders);
+  } else {
+    findorder.UserId.push(req.body);
+    await findorders.save();
+    return res.send(findorder);
+  }
 });
 
 module.exports = router;

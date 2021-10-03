@@ -1,19 +1,26 @@
 var mongoose = require("mongoose");
 
 var orderSchema = mongoose.Schema({
-  amount: { type: Number },
-  dateTime: { type: String },
-  products: [
+  _id: String,
+  UserId: [
     {
       type: mongoose.Schema({
-        id: String,
-        title: String,
-        quantity: Number,
-        price: Number,
+        amount: { type: Number },
+        dateTime: { type: String },
+        status: { type: String, default: "Pending" },
+        products: [
+          {
+            type: mongoose.Schema({
+              id: String,
+              title: String,
+              quantity: Number,
+              price: Number,
+            }),
+          },
+        ],
       }),
     },
   ],
-  status: { type: String, default: "Pending" },
 });
 var Order = mongoose.model("Order", orderSchema);
 
