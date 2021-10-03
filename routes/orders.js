@@ -16,7 +16,7 @@ router.put("/:id", async (req, res) => {
 });
 //postproducts
 router.post("/:id", async (req, res) => {
-  let findorder = Order.findById(req.params.id);
+  let findorder = await Order.findById(req.params.id);
   if (!findorder) {
     let orders = await new Order();
     orders._id = req.params.id;
