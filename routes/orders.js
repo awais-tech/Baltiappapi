@@ -6,7 +6,6 @@ let router = express.Router();
 //get products
 router.get("/", async (req, res) => {
   let orders = await Order.find();
-  // let findorder = await Order.findById(req.params.id);
   return res.send(orders);
 });
 router.put("/:id", async (req, res) => {
@@ -25,7 +24,7 @@ router.post("/:id", async (req, res) => {
     await orders.save();
     return res.send(orders);
   } else {
-    findorder.UserId.push(req.body);
+    await findorder.UserId.push(req.body);
     await findorder.save();
     return res.send(findorder);
   }
