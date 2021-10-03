@@ -11,6 +11,7 @@ var productSchema = mongoose.Schema({
   price: Number,
   description: String,
   isFavorite: Boolean,
+  createdby: String,
 });
 
 var Product = mongoose.model("Product", productSchema);
