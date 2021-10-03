@@ -9,8 +9,8 @@ router.get("/:id", async (req, res) => {
   return res.send(orders);
 });
 router.put("/:id", async (req, res) => {
-  let orders = await Order.findOne({ "Userid._id": req.params.id });
-  orders.Userid.status = req.body.status;
+  let orders = await Order.findOne({ "Userid[0]._id": req.params.id });
+  orders.Userid[0].status = req.body.status;
   await orders.save();
   return res.send(orders);
 });
