@@ -5,7 +5,7 @@ let router = express.Router();
 
 //get products
 router.get("/:id", async (req, res) => {
-  let orders = await Order.findbyid(req.params.id);
+  let orders = await Order.findById(req.params.id);
   return res.send(orders);
 });
 router.put("/:id", async (req, res) => {
