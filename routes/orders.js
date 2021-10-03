@@ -25,7 +25,7 @@ router.post("/:id", async (req, res) => {
     await orders.save();
     return res.send(orders);
   } else {
-    await findorder.UserId.push(req.body);
+    findorder.UserId.push(req.body);
     await findorder.save();
     return res.send(findorder);
   }
