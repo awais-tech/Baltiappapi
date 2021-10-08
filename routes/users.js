@@ -14,7 +14,7 @@ router.post("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    let users = await User.findById(req.params.id);
+    let users = await User.findOne({ Uid: req.params.id });
     if (!users) {
       return res.status(400).send({ message: "No user found" });
     }
