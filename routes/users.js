@@ -3,7 +3,7 @@ const { User } = require("../models/user");
 var router = express.Router();
 
 /* GET users listing. */
-router.get("/", function (req, res, next) {
+router.post("/", function (req, res, next) {
   try {
     let user = new User(req.body);
     return res.status(200).send(user);
