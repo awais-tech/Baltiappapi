@@ -2,7 +2,7 @@ var express = require("express");
 const { User } = require("../models/user");
 var router = express.Router();
 
-router.post("/", function (req, res, next) {
+router.post("/", async (req, res, next) => {
   try {
     let user = new User(req.body);
     await user.save();
