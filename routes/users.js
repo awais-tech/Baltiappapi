@@ -12,4 +12,13 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.get("/:id", async (req, res, next) => {
+  try {
+    let users = await User.findById(req.params.id);
+    return res.status(200).send(users);
+  } catch (e) {
+    return res.send(e);
+  }
+});
+
 module.exports = router;
