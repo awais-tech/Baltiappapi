@@ -13,7 +13,9 @@ router.post("/", async (req, res, next) => {
 });
 router.put("/:id", async (req, res, next) => {
   try {
-    let users = await User.findOneAndUpdate({ Uid: req.params.id }, req.body);
+    let users = await User.findOneAndUpdate({ Uid: req.params.id }, req.body, {
+      new: true,
+    });
     // if (!users) {
     //   return res.status(400).send({ message: "No user found" });
     // }
