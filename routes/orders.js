@@ -5,7 +5,7 @@ let router = express.Router();
 
 //get products
 router.get("/:id/:check?", async (req, res) => {
-  let checks = Boolean(req.params.check);
+  let checks = Boolean(req.params.check ? true : false);
   if (checks) {
     let findorder = await Order.find({ "UserId.createdby": req.params.id });
     return res.send(findorder);
