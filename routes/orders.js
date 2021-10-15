@@ -4,7 +4,12 @@ const { Order } = require("../models/orders");
 let router = express.Router();
 
 //get products
-router.get("/:id", async (req, res) => {
+router.get("/:id/:check?", async (req, res) => {
+  let checks = Boolean(req.params.check);
+  if (checks) {
+    let findorder = await Order.find({ createdby: req.params.id });
+    return res.send(findorder);
+  }
   let orders = await Order.findById(req.params.id);
   return res.send(orders);
 });

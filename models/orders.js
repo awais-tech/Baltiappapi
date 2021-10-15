@@ -8,6 +8,7 @@ var orderSchema = mongoose.Schema({
         amount: { type: Number },
         dateTime: { type: String },
         status: { type: String, default: "Pending" },
+        createdby: { type: String },
         products: [
           {
             type: mongoose.Schema({
@@ -15,6 +16,7 @@ var orderSchema = mongoose.Schema({
               title: String,
               quantity: Number,
               price: Number,
+              createdby: { type: String },
             }),
           },
         ],
