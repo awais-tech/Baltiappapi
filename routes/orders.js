@@ -7,7 +7,7 @@ let router = express.Router();
 router.get("/:id/:check?", async (req, res) => {
   let checks = Boolean(req.params.check);
   if (checks) {
-    let findorder = await Order.find({ createdby: req.params.id });
+    let findorder = await Order.find({ "UserId.createdby": req.params.id });
     return res.send(findorder);
   }
   let orders = await Order.findById(req.params.id);
