@@ -11,6 +11,9 @@ router.get("/:id/:check?", async (req, res) => {
     return res.send(findorder);
   }
   let orders = await Order.findById(req.params.id);
+  if (!orders) {
+    return res.send([]);
+  }
   return res.send(orders);
 });
 router.put("/:id", async (req, res) => {
