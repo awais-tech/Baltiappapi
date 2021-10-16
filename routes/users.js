@@ -38,5 +38,15 @@ router.get("/:id", async (req, res, next) => {
     return res.send(e);
   }
 });
-
+router.get("/", async (req, res, next) => {
+  try {
+    let users = await User.find();
+    if (!users) {
+      return res.status(400).send({ message: "No user found" });
+    }
+    return res.status(200).send(users);
+  } catch (e) {
+    return res.send(e);
+  }
+});
 module.exports = router;
