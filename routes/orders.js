@@ -9,11 +9,12 @@ router.get("/:id/:check?", async (req, res) => {
     let checks = Boolean(req.params.check ? true : false);
     if (checks) {
       let findorder = await Order.find({ "UserId.createdby": req.params.id });
+      if (findorder.length < 1) {
+        return res.status(400).send("error");
+      }
       return res.send(findorder);
     }
-    if (findorder.length < 1) {
-      return res.status(400).send("error");
-    }
+
     let orders = await Order.findById(req.params.id);
     if (!orders) {
       return res.status(400).send("error");
