@@ -20,15 +20,23 @@ router.get("/", async (req, res, next) => {
     return res.send({ message: e });
   }
 });
-router.get("/:id", async (req, res, next) => {
+router.get("/:id/:check?", async (req, res) => {
   try {
-    let feed = await feedback.findOne({ OID: req.params.id });
-    if (!feed) {
+    if (req.params.check == "true") {
+      let findfeed = await feedback.find({ owner: req.params.id });
+      if (findfeed.length < 1) {
+        return res.status(402).send({ message: "No feedback" });
+      }
+      return res.send(findfeed);
+    }
+
+    let findfeed = await feedback.find({ UID: req.params.id });
+    if (!orders) {
       return res.status(400).send({ message: "No feedback" });
     }
-    return res.status(200).send(feed);
+    return res.send(findfeed);
   } catch (e) {
-    return res.send(e);
+    return res.status(400).send(e);
   }
 });
 module.exports.feedback = router;
