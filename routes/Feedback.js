@@ -3,7 +3,7 @@ const { feedback } = require("../models/feedback");
 var router = express.Router();
 
 /* GET home page. */
-router.post("/", function (req, res, next) {
+router.post("/", async (req, res, next) => {
   let feed = new feedback(req.body);
   await feed.save();
   return res.send(feed);
