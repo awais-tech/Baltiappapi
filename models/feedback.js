@@ -1,16 +1,13 @@
 var mongoose = require("mongoose");
 
-var Feedback = mongoose.Schema({
-   UID: String ,
-  OID:String ,
-        description: String ,
-        rating:Number,
-        owner:String,
-      
-        
-      }),
-  
+var feedback = mongoose.Schema({
+  UID: String,
+  OID: String,
+  description: String,
+  rating: Number,
+  owner: String,
+});
 
-var feedbacks = mongoose.model("feedback", Feedback);
+var feedbacks = mongoose.model("feedback", feedback);
 
-module.exports.feedback=feedbacks;
+module.exports.feedback = feedbacks;
