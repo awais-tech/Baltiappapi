@@ -1,9 +1,9 @@
 var mongoose = require("mongoose");
 
 var Feedback = mongoose.Schema({
-   UID: { type: String },
-        OID: { type: String },
-        description: { type: String },
+   UID: String ,
+  OID:String ,
+        description: String ,
         rating:Number,
         owner:String,
       
