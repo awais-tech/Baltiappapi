@@ -17,7 +17,7 @@ router.get("/", async (req, res, next) => {
     }
     return res.status(200).send(feed);
   } catch (e) {
-    return res.send(e);
+    return res.send({ message: e });
   }
 });
 router.get("/:id", async (req, res, next) => {
