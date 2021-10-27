@@ -31,4 +31,4 @@ router.get("/:id", async (req, res, next) => {
     return res.send(e);
   }
 });
-module.exports = router;
+module.exports.feedback = router;
