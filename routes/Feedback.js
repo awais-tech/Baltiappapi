@@ -31,7 +31,7 @@ router.get("/:id/:check?", async (req, res) => {
     }
 
     let findfeed = await feedback.find({ UID: req.params.id });
-    if (!orders) {
+    if (!findfeed) {
       return res.status(400).send({ message: "No feedback" });
     }
     return res.send(findfeed);
