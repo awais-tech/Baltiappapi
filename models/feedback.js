@@ -6,6 +6,7 @@ var feedback = mongoose.Schema({
   description: String,
   rating: Number,
   owner: String,
+  email: String,
 });
 
 var feedbacks = mongoose.model("feedback", feedback);
