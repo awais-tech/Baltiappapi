@@ -29,6 +29,13 @@ router.get("/:id/:check?", async (req, res) => {
       }
       return res.send(findfeed);
     }
+    if (req.params.check == "prod") {
+      let findfeed = await feedback.find({ proid: req.params.id });
+      if (findfeed.length < 1) {
+        return res.status(402).send({ message: "No feedback" });
+      }
+      return res.send(findfeed);
+    }
 
     let findfeed = await feedback.find({ UID: req.params.id });
     if (!findfeed) {
