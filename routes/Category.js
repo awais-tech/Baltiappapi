@@ -10,14 +10,14 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  let Category = new Category(req.body);
-  await Category.save();
-  return res.send(Category);
+  let Categorys = new Category(req.body);
+  await Categorys.save();
+  return res.send(Categorys);
 });
 router.put("/:id", async (req, res) => {
-  let Category = await Category.findOneAndUpdate(req.params.id, req.body);
+  let Categorys = await Category.findOneAndUpdate(req.params.id, req.body);
 
-  return res.status(200).send(Category);
+  return res.status(200).send(Categorys);
 });
 router.delete("/:id", async (req, res) => {
   let Categorys = await Category.findByIdAndDelete(req.params.id);
