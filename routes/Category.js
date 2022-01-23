@@ -25,4 +25,4 @@ router.delete("/:id", async (req, res) => {
   return res.status(200).send(Categorys);
 });
 
-module.exports = router;
+module.exports.Category = router;

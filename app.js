@@ -8,9 +8,10 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const productRouter = require("./routes/product");
 const ordersRouter = require("./routes/orders");
-const Category = require("./routes/Category");
+
 const mongoose = require("mongoose");
 const { feedback } = require("./routes/Feedback");
+const { Category } = require("./routes/Category");
 
 var app = express();
 app.use(cors());
