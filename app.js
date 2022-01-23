@@ -8,6 +8,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const productRouter = require("./routes/product");
 const ordersRouter = require("./routes/orders");
+const Category = require("./routes/Category");
 const mongoose = require("mongoose");
 const { feedback } = require("./routes/Feedback");
 
@@ -29,6 +30,7 @@ app.use("/users", usersRouter);
 app.use("/products", productRouter);
 app.use("/orders", ordersRouter);
 app.use("/feedback", feedback);
+app.use("/Category", Category);
 // app.use('/api/products',  productRouter);
 
 // catch 404 and forward to error handler
