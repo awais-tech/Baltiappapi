@@ -9,29 +9,33 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/:id", async (req, res) => {
-  let findfav = await UserFav.findOne({ Uid: req.params.id });
+  try {
+    let findfav = await UserFav.findOne({ Uid: req.params.id });
 
-  if (!findfav) {
-    let fav = new UserFav();
-    fav.Uid = req.params.id;
-    fav.Fav = req.body;
-    await fav.save();
-    return res.send(fav);
-  } else {
-    let findfav = await UserFav.findOne({ "Fav._id": req.body.id });
-    if (findfav) {
-      let fav = await UserFav.findOneAndUpdate(
-        {
-          "Fav._id": req.body.id,
-        },
-        { $set: { "Fav.$.status": req.body.status } }
-      );
+    if (!findfav) {
+      let fav = new UserFav();
+      fav.Uid = req.params.id;
+      fav.Fav = req.body;
+      await fav.save();
       return res.send(fav);
     } else {
-      findfav.Fav.push(req.body);
-      await findfav.save();
-      return res.send(findfav);
+      let findfav = await UserFav.findOne({ "Fav._id": req.body.id });
+      if (findfav) {
+        let fav = await UserFav.findOneAndUpdate(
+          {
+            "Fav._id": req.body.id,
+          },
+          { $set: { "Fav.$.status": req.body.status } }
+        );
+        return res.send(fav);
+      } else {
+        findfav.Fav.push(req.body);
+        await findfav.save();
+        return res.send(findfav);
+      }
     }
+  } catch (e) {
+    return res.send("error");
   }
 });
 module.exports.UserFav = router;
