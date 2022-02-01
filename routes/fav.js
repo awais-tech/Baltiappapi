@@ -19,11 +19,11 @@ router.post("/:id", async (req, res) => {
       await fav.save();
       return res.send(fav);
     } else {
-      let findfav = await UserFav.findOne({ "Fav._id": req.body.id });
-      if (findfav) {
+      let findfavs = await UserFav.findOne({ "Fav.id": req.body.id });
+      if (findfavs) {
         let fav = await UserFav.findOneAndUpdate(
           {
-            "Fav._id": req.body.id,
+            "Fav.id": req.body.id,
           },
           { $set: { "Fav.$.status": req.body.status } }
         );
