@@ -35,7 +35,7 @@ router.post("/:id", async (req, res) => {
       }
     }
   } catch (e) {
-    return res.send("error");
+    return res.send(e);
   }
 });
 module.exports.UserFav = router;
