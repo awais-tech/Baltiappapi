@@ -13,6 +13,7 @@ const mongoose = require("mongoose");
 const { feedback } = require("./routes/Feedback");
 const { Category } = require("./routes/Category");
 const { Resturent } = require("./routes/Resturent");
+const { UserFav } = require("./routes/fav");
 
 var app = express();
 app.use(cors());
@@ -34,6 +35,7 @@ app.use("/orders", ordersRouter);
 app.use("/feedback", feedback);
 app.use("/Category", Category);
 app.use("/Resturent", Resturent);
+app.use("/Favourite", UserFav);
 // app.use('/api/products',  productRouter);
 
 // catch 404 and forward to error handler
