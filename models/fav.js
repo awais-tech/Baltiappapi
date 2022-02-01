@@ -4,8 +4,10 @@ var userSchem = mongoose.Schema({
   Uid: String,
   Fav: [
     {
-      id: String,
-      status: Boolean,
+      type: mongoose.Schema({
+        id: String,
+        status: Boolean,
+      }),
     },
   ],
 });
