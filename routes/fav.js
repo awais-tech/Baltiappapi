@@ -3,9 +3,15 @@ const { UserFav } = require("../models/fav");
 let router = express.Router();
 
 router.get("/:id", async (req, res) => {
-  let fav = await UserFav.findOne({ Uid: req.params.id });
-
-  return res.send(fav);
+  try {
+    let fav = await UserFav.findOne({ Uid: req.params.id });
+    if (fav) {
+      return res.send(fav);
+    }
+    return res.status(400).send({ Error: "Not found" });
+  } catch (e) {
+    return res.status(400).send({ Error: "Not found" });
+  }
 });
 
 router.post("/:id", async (req, res) => {
