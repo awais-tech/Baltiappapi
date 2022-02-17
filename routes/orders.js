@@ -23,6 +23,19 @@ router.get("/:id/:check?", async (req, res) => {
     return res.status(400).send("error");
   }
 });
+
+router.get("/", async (req, res) => {
+  try {
+    let findorder = await Order.find();
+    if (findorder.length < 1) {
+      return res.status(402).send("error");
+    }
+    return res.send(findorder);
+  } catch (e) {
+    return res.status(400).send("error");
+  }
+});
+
 router.put("/:id", async (req, res) => {
   let orders = await Order.findOneAndUpdate(
     {
