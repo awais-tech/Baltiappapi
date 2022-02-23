@@ -46,6 +46,13 @@ router.put("/:id", async (req, res) => {
 
   return res.send(orders);
 });
+router.delete("/:id", async (req, res) => {
+  let ordersdelete = await Order.findOneAndDelete({
+    "UserId._id": req.params.id,
+  });
+
+  return res.send({ message: "succesfully deleted" });
+});
 //postproducts
 router.post("/:id", async (req, res) => {
   let findorder = await Order.findById(req.params.id);
