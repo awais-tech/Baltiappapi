@@ -9,11 +9,6 @@ router.post("/", async (req, res, next) => {
   return res.send(feed);
 });
 
-router.delete("/:id", async (req, res) => {
-  let feedbacks = await feedback.findByIdAndDelete(req.params.id);
-
-  return res.status(200).send(feedbacks);
-});
 router.get("/", async (req, res, next) => {
   try {
     let feed = await feedback.find();
