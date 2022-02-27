@@ -26,7 +26,7 @@ router.put("/:id", async (req, res, next) => {
     return res.send(e);
   }
 });
-router.get("info/:id", async (req, res, next) => {
+router.get("/info/:id", async (req, res, next) => {
   try {
     let users = await User.findOne(req.params.id);
     if (!users) {
